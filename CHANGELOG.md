@@ -1,3 +1,6 @@
+## 1.1.2 (pending)
+* Add 1.9.3-p194 headers
+
 ## 1.1.1
 * Fix location of ruby source headers
 
