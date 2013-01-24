@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = %q{Provide Ruby core source files for C extensions that need them.}
   s.required_rubygems_version = ">= 1.3.6"
   s.extra_rdoc_files = [ "README.md"]
-  s.files = `git ls-files`.split("\n")
+  s.files = Dir["#{File.dirname(__FILE__)}/lib/**/*"]
   s.add_development_dependency "archive-tar-minitar", ">= 0.5.2"
   s.add_development_dependency 'rake', '~> 0.9.2'
 end
