@@ -9,7 +9,10 @@ module Debugger
       28524 => 'ruby-1.9.2-rc1',
       28618 => 'ruby-1.9.2-rc2',
       32789 => 'ruby-1.9.3-preview1',
-      33323 => 'ruby-1.9.3-rc1'
+      33323 => 'ruby-1.9.3-rc1',
+      37411 => 'ruby-2.0.0-preview1',
+      38126 => 'ruby-2.0.0-preview2',
+      38733 => 'ruby-2.0.0-rc1',
     }
 
     def self.create_makefile_with_core(hdrs, name)

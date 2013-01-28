@@ -9,7 +9,8 @@ desc 'Add ruby headers under lib for a given VERSION'
 task :add_source do
   version = ENV['VERSION'] or abort "Need a $VERSION"
   ruby_dir = "ruby-#{version}"
-  uri_path = "http://ftp.ruby-lang.org/pub/ruby/1.9/#{ruby_dir}.tar.gz"
+  minor_version = version.split('.')[0..1].join('.')
+  uri_path = "http://ftp.ruby-lang.org/pub/ruby/#{minor_version}/#{ruby_dir}.tar.gz"
   dest_dir = File.dirname(__FILE__) + "/lib/debugger/ruby_core_source/#{ruby_dir}"
 
   puts "Downloading #{uri_path}..."
