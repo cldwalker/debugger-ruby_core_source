@@ -14,6 +14,7 @@ module Debugger
       38126 => 'ruby-2.0.0-preview2',
       38733 => 'ruby-2.0.0-rc1',
       39161 => 'ruby-2.0.0-rc2',
+      44422 => 'ruby-2.1.0',
     }
 
     def self.create_makefile_with_core(hdrs, name)
@@ -23,12 +24,7 @@ module Debugger
         return true
       end
 
-      ruby_dir = if RUBY_PATCHLEVEL < 0
-        REVISION_MAP[RUBY_REVISION] or
-          no_source_abort("ruby-#{RUBY_VERSION} (revision #{RUBY_REVISION})")
-      else
-        "ruby-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
-      end
+      ruby_dir = detect_ruby_version
 
       # Check if core headers were already downloaded; if so, use them
       if RbConfig::CONFIG["rubyhdrdir"]
@@ -52,6 +48,15 @@ module Debugger
         end
       }
       return false
+    end
+
+    def self.detect_ruby_version
+      REVISION_MAP[RUBY_REVISION] or
+        if RUBY_PATCHLEVEL < 0
+          no_source_abort("ruby-#{RUBY_VERSION} (revision #{RUBY_REVISION})")
+        else
+          "ruby-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+        end
     end
 
     def self.no_source_abort(ruby_version)
